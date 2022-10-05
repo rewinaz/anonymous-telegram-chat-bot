@@ -10,7 +10,9 @@ export const messageHandler = async (
     (user) => user.chatId === ctx.chat.id && user.matchedTo != null
   );
   if (sender) {
-    bot.api.sendMessage(sender.matchedTo!, ctx.message.text!);
+    bot.api.sendMessage(sender.matchedTo!, ctx.message.text!, {
+      protect_content: true
+    });
   } else {
     bot.api.sendMessage(
       ctx.chat.id,
